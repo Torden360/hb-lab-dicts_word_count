@@ -19,8 +19,14 @@ def find_word_count(text_file):
             # else:
             #     word = word.lower()
             #     word_count_dict[word] = word_count_dict.get(word, 0) + 1
+            # ------------------------ ^ not the best way, do regular expressions
+            # insead. In fact, reg express the whole thing p much
     print(word_count_dict)
+
+    close(text_file)
 
 # print(find_word_count("twain.txt"))
 print(find_word_count("test.txt"))
+
+
 
