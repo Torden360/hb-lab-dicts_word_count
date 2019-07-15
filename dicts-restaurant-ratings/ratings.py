@@ -1,22 +1,42 @@
 """Restaurant rating lister."""
 
-scores_file = open("scores.txt")
-rating_dict = {}
+def print_restaurant_rating():
 
-for line in scores_file:
-    line = line.rstrip().split(":")
-    # line = tuple(line)
+    scores_file = open("scores.txt")
+    rating_dict = {}
 
-    rating_dict[line[0]] = line[1]
+    for line in scores_file:
+        line = line.rstrip().split(":")
+        # line = tuple(line)
 
-# print(rating_dict)   
+        rating_dict[line[0]] = line[1]
 
-rating_dict = sorted(rating_dict.items()) 
-print(rating_dict)
+    # print(rating_dict)   
 
-
-for restaurant in rating_dict:
-    print(f"{restaurant[0]} has a rating of {restaurant[1]}!")
+    input_restaurant = input("Enter the name of a restaurant > ")
 
 
-close("scores.txt")
+    while True:
+
+        input_rating = int(input("Enter rating > "))
+        # print(input_rating)
+
+        if input_rating >= 1 and input_rating <= 5:
+
+            rating_dict[input_restaurant] = input_rating
+
+            rating_dict = sorted(rating_dict.items()) 
+            # print(rating_dict)
+
+
+            for restaurant in rating_dict:
+                print(f"{restaurant[0]} has a rating of {restaurant[1]}!")
+
+            break
+
+        else:
+            print("Please enter a rating between 1 and 5.")
+
+    scores_file.close()
+
+
